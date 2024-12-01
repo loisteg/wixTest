@@ -1,7 +1,8 @@
-import React from "react";
 import { CategoryTree } from "./components/CategoryTree";
 
-export const App: React.FC = () => {
+import { FC } from "react";
+
+export const App: FC = () => {
   return (
     <div>
       <CategoryTree />

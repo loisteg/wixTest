@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import { Category as CategoryType } from "../types/Category";
+import { useState } from "react";
 import { IconButton, TextField, Button, Typography, Box } from "@mui/material";
 import { Delete, Add, Edit } from "@mui/icons-material";
 
-interface CategoryProps {
-  category: CategoryType;
-  onAddSubcategory: (parentId: string, name: string) => void;
-  onRenameCategory: (id: string, newName: string) => void;
-  onDeleteCategory: (id: string) => void;
-}
+import { CategoryProps } from "../types/uiTypes/categoryTypes";
 
-export const Category: React.FC<CategoryProps> = ({
+import { FC } from "react";
+
+export const Category: FC<CategoryProps> = ({
   category,
   onAddSubcategory,
   onRenameCategory,

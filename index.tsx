@@ -1,15 +1,16 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import { App } from "./App";
+import { StrictMode } from "react";
+import { App } from "./src/App";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById("root")
 );

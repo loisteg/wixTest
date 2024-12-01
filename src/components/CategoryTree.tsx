@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Category } from "./Category";
-import { Category as CategoryType } from "../types/Category";
 import { Button, Typography } from "@mui/material";
+import { Category } from "./Category";
 
-export const CategoryTree: React.FC = () => {
+import { useState } from "react";
+
+import { FC } from "react";
+import { Category as CategoryType } from "../types/commonTypes";
+
+export const CategoryTree: FC = () => {
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   const handleAddCategory = () => {
