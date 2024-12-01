@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/wixTest/static/js/main.65dfccfc.js",
+    "index.html": "/wixTest/index.html",
+    "main.65dfccfc.js.map": "/wixTest/static/js/main.65dfccfc.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.65dfccfc.js"
+  ]
+}
