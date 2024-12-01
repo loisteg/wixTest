@@ -4,8 +4,9 @@ import { Category } from "./Category";
 import { useControlCategoriesTrees } from "../hooks";
 
 import { FC } from "react";
+import { CategoryTreeProps } from "../types/uiTypes/categoryTypes";
 
-export const CategoryTree: FC<{ id: number }> = ({ id }) => {
+export const CategoryTree: FC<CategoryTreeProps> = ({ id }) => {
   const {
     categories,
     handleAddCategory,
