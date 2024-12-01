@@ -1,38 +1,25 @@
-import { useState } from "react";
 import { IconButton, TextField, Button, Typography, Box } from "@mui/material";
 import { Delete, Add, Edit } from "@mui/icons-material";
 
-import { CategoryProps } from "../types/uiTypes/categoryTypes";
+import { useControlCategory } from "../hooks";
 
 import { FC } from "react";
+import { CategoryProps } from "../types/uiTypes/categoryTypes";
 
-export const Category: FC<CategoryProps> = ({
-  category,
-  onAddSubcategory,
-  onRenameCategory,
-  onDeleteCategory,
-}) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [newSubcategoryName, setNewSubcategoryName] = useState("");
-  const [isRenaming, setIsRenaming] = useState(false);
-  const [newName, setNewName] = useState(category.name);
-
-  const handleAddSubcategory = () => {
-    if (newSubcategoryName.trim() !== "") {
-      onAddSubcategory(category.id, newSubcategoryName.trim());
-      setNewSubcategoryName("");
-    }
-  };
-
-  const handleRenameCategory = () => {
-    if (newName.trim() !== "") {
-      onRenameCategory(category.id, newName.trim());
-    }
-  };
-
-  const handleDeleteCategory = () => {
-    onDeleteCategory(category.id);
-  };
+export const Category: FC<CategoryProps> = (props) => {
+  const {
+    isExpanded,
+    toggleIsExpanded,
+    newSubcategoryName,
+    setNewSubcategoryName,
+    isRenaming,
+    toggleIsRenaming,
+    newName,
+    setNewName,
+    handleAddSubcategory,
+    handleRenameCategory,
+    handleDeleteCategory,
+  } = useControlCategory(props);
 
   return (
     <Box ml={4}>
@@ -40,9 +27,9 @@ export const Category: FC<CategoryProps> = ({
         <Typography
           variant="subtitle1"
           style={{ cursor: "pointer", userSelect: "none" }}
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={toggleIsExpanded}
         >
-          {isExpanded ? "▼" : "▶"} {category.name}
+          {isExpanded ? "▼" : "▶"} {props.category.name}
         </Typography>
         <IconButton
           size="small"
@@ -64,14 +51,14 @@ export const Category: FC<CategoryProps> = ({
               color="primary"
               onClick={() => {
                 handleRenameCategory();
-                setIsRenaming(false);
+                toggleIsRenaming();
               }}
             >
               Save
             </Button>
           </>
         ) : (
-          <IconButton size="small" onClick={() => setIsRenaming(true)}>
+          <IconButton size="small" onClick={toggleIsRenaming}>
             <Edit />
           </IconButton>
         )}
@@ -93,13 +80,13 @@ export const Category: FC<CategoryProps> = ({
             </IconButton>
           </Box>
           <Box mt={2}>
-            {category.children.map((child) => (
+            {props.category.children.map((child) => (
               <Category
                 key={child.id}
                 category={child}
-                onAddSubcategory={onAddSubcategory}
-                onRenameCategory={onRenameCategory}
-                onDeleteCategory={onDeleteCategory}
+                onAddSubcategory={props.onAddSubcategory}
+                onRenameCategory={props.onRenameCategory}
+                onDeleteCategory={props.onDeleteCategory}
               />
             ))}
           </Box>

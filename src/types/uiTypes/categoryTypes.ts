@@ -2,7 +2,7 @@ import { Category } from "../commonTypes";
 
 export interface CategoryProps {
   category: Category;
-  onAddSubcategory: (parentId: string, name: string) => void;
-  onRenameCategory: (id: string, newName: string) => void;
-  onDeleteCategory: (id: string) => void;
+  onAddSubcategory: (parentId: Category["id"], name: Category["name"]) => void;
+  onRenameCategory: (id: Category["id"], newName: string) => void;
+  onDeleteCategory: (id: Category["id"]) => void;
 }
