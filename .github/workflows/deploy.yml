@@ -41,9 +41,3 @@ jobs:
           build_dir: build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: github-actions-up-and-running/pr-comment@v1.0.1
-        with:
-          # GITHUB_TOKEN secret
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          # Message to comment
-          message: Your preview is available at https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
